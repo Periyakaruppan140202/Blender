@@ -1,0 +1,50 @@
+CREATE USER vatsa@'localhost' IDENTIFIED BY 'mypass';  
+GRANT ALL ON MY_TABLE TO vatsa@'localhost';  
+GRANT SELECT ON Users TO vatsa@'localhost';
+
+REVOKE INSERT ON *.* FROM 'vatsa'@'localhost';
+
+Switch user:
+System mysql -u <user> -p;
+
+ON DELETE CASCADE with FOREIGN KEY:
+CREATE TABLE Enroll (
+    sno INT,
+    cno INT,
+    jdate date,
+    PRIMARY KEY(sno,cno),
+    FOREIGN KEY(sno) 
+        REFERENCES Student(sno)
+        ON DELETE CASCADE
+    FOREIGN KEY(cno) 
+        REFERENCES Course(cno)
+        ON DELETE CASCADE
+);
+
+FOR ON DELETE SET NULL:
+CREATE TABLE Enroll (
+    sno INT,
+    cno INT,
+    jdate date,
+    PRIMARY KEY(sno,cno),
+    FOREIGN KEY(sno) 
+        REFERENCES Student(sno)
+        ON DELETE CASCADE
+    FOREIGN KEY(cno) 
+        REFERENCES Course(cno)
+        ON DELETE SET NULL
+);
+
+
+CREATE TABLE Student (
+    sno INT PRIMARY KEY,
+    sname VARCHAR(20),
+    age INT
+
+);
+
+CREATE TABLE Course (
+    cno INT PRIMARY KEY,
+    cname VARCHAR(20)
+);
+
