@@ -7,6 +7,9 @@ REVOKE INSERT ON *.* FROM 'vatsa'@'localhost';
 Switch user:
 System mysql -u <user> -p;
 
+List Users:
+select user from mysql.user;
+
 ON DELETE CASCADE with FOREIGN KEY:
 CREATE TABLE Enroll (
     sno INT,
