@@ -86,8 +86,8 @@ void Print_matrix(int local_mat[], int n, int my_rank, int p, MPI_Comm comm)
                 if (temp_mat[i*n+j] == INFINITY) 
                     printf("i ");
                 else
-                    printf("%d ", temp_mat[i*n+j]); printf("\n");
-            }
+                    printf("%d ", temp_mat[i*n+j]);
+            }printf("\n");}
             free(temp_mat);
     }
     else
